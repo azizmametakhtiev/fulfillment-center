@@ -73,7 +73,7 @@ jobs:
         run: |
           docker --context remote compose build \
             --build-arg KEEP_CACHE=${{ steps.get_timestamp.outputs.timestamp }} \
-            --build-arg API_HOST=http://${{ env.HOST }}:8000 \
+            --build-arg API_HOST=https://${{ env.HOST }}:8000 \
             --build-arg DOMAIN=${{ env.HOST }}
 
       - name: Build the seeder if the database volume has been just created
@@ -83,7 +83,7 @@ jobs:
       - name: Start the project on the remote
         run: docker --context remote compose up -d
         env:
-          WEB_HOST: http://${{ env.HOST }}
+          WEB_HOST: https://${{ env.HOST }}
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           UPLOADS_VOLUME: ${{ env.UPLOADS_VOLUME }}
           MONGO_USERNAME: ${{ secrets.MONGO_USERNAME }}
