@@ -18,7 +18,7 @@ export class SeederService {
 
     await this.userModel.create(
       {
-        email: 'john@doe.com',
+        email: 'azizmam65@gmail.com',
         password: '1234567890',
         confirmPassword: '1234567890',
         displayName: 'Admin',
